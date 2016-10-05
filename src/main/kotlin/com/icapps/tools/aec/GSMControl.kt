@@ -87,9 +87,15 @@ interface GSMControl {
     fun setSignalStrength(strength: Int): Boolean
 }
 
+/**
+ * Possible GSM data and voice states
+ */
 enum class GSMState {
     UNREGISTERED, HOME, ROAMING, SEARCHING, DENIED
 }
 
+/**
+ * Data class containing the status for both voice and data
+ */
 data class GSMStatus(val voiceStatus: GSMState, val dataStatus: GSMState) {
 }

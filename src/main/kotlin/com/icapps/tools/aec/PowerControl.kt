@@ -74,13 +74,22 @@ interface PowerControl {
 
 }
 
+/**
+ * Possible power status values
+ */
 enum class PowerStatus {
     UNKNOWN, CHARGING, DISCHARGING, NOT_CHARGING, FULL
 }
 
+/**
+ * Possible power health values
+ */
 enum class PowerHealthStatus {
     UNKNOWN, GOOD, OVERHEAT, DEAD, OVERVOLTAGE, FAILURE
 }
 
+/**
+ * Data class containing the power status of the device
+ */
 data class PowerConfiguration(val acStatus: Boolean, val status: PowerStatus, val health: PowerHealthStatus, val hasBattery: Boolean, val capacity: Int) {
 }

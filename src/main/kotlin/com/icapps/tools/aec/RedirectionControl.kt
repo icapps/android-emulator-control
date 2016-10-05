@@ -51,9 +51,15 @@ interface RedirectionControl {
 
 }
 
+/**
+ * Supported redirection protocols
+ */
 enum class RedirProtocol {
     UDP, TCP
 }
 
+/**
+ * Data class describing an active redirection
+ */
 data class Redirection(val protocol: RedirProtocol, val hostPort: Int, val targetPort: Int) {
 }

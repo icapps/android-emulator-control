@@ -43,6 +43,9 @@ interface CDMAControl {
 
 }
 
+/**
+ * Supported CMDA subscription sources
+ */
 enum class CDMASource {
     RUIM, NV
 }
