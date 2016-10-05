@@ -18,13 +18,26 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling fingerprints on the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface FingerprintControl {
 
-    fun touch(index: Int) : Boolean
+    /**
+     * Touch the sensor with given finger index
+     *
+     * @param [index] The index of the finger that touches the sensor
+     * @return True on success, false on failure
+     */
+    fun touch(index: Int): Boolean
 
-    fun removeFinger() : Boolean
+    /**
+     * Stop touching the sensor
+     *
+     * @return True on success, false on failure
+     */
+    fun removeFinger(): Boolean
 
 }

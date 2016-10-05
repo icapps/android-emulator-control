@@ -18,15 +18,35 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling port redirection on the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface RedirectionControl {
 
+    /**
+     * Adds a redirection rule from [hostPort] to [targetPort]
+     *
+     * @param [protocol] The protocol to forward
+     * @param [hostPort] The host port
+     * @param [targetPort] The target port
+     * @return True on success, false on failure
+     */
     fun addRedirection(protocol: RedirProtocol, hostPort: Int, targetPort: Int): Boolean
 
+    /**
+     * Remove a redirection
+     *
+     * @param [protocol] The protocol to remove the forwarding for
+     * @param [hostPort] The host port of the rule to remove
+     * @return True on success, false on failure
+     */
     fun removeRedirection(protocol: RedirProtocol, hostPort: Int): Boolean
 
+    /**
+     * Returns the list of active redirections
+     */
     fun listRedirections(): List<Redirection>
 
 }

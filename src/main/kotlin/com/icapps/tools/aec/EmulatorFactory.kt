@@ -17,16 +17,24 @@
 
 package com.icapps.tools.aec
 
-import com.icapps.tools.aec.Emulator
 import com.icapps.tools.aec.control.EmulatorImpl
 
 /**
+ * Factory for creating instances of the emulator controller
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 class EmulatorFactory {
 
     companion object {
+        /**
+         * Creates a new instance of the emulator controller
+         *
+         * @param [port] The control port of the emulator. Every emulator has a unique port, starting at 5554 and increasing from there
+         * @param [authSecret] The authentication secret of the device, can be found in ~/.emulator_console_auth_token
+         * @return A control interface targeted to the given emulator
+         */
         @JvmStatic fun create(port: Int, authSecret: String): Emulator {
             return EmulatorImpl(port, authSecret)
         }

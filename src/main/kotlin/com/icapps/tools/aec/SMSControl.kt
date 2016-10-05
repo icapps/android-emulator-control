@@ -17,11 +17,20 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling the sms functionality of the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface SMSControl {
 
+    /**
+     * Sends a text message to the emulator from [phoneNumber]
+     *
+     * @param [phoneNumber] Must not contain spaces
+     * @param [message] Can contain spaces
+     * @return True if the command was successful, false if it failed
+     */
     fun send(phoneNumber: String, message: String): Boolean
 
 }

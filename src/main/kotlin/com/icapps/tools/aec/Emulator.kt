@@ -18,34 +18,75 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface Emulator {
 
+    /**
+     * Connects to the emulator
+     */
     fun connect()
 
+    /**
+     * Disconnects from the emulator
+     */
     fun disconnect()
 
+    /**
+     * Rotate the device 90 degrees to the left
+     */
     fun rotateLeft()
 
+    /**
+     * Crash the emulator... Because... reasons
+     */
     fun crash()
 
+    /**
+     * Shutdown the emulator
+     */
     fun kill()
 
+    /**
+     * The power control for this emulator
+     */
     val powerControl: PowerControl
 
+    /**
+     * The redirection control for this emulator
+     */
     val redirectionControl: RedirectionControl
 
+    /**
+     * The avd control for this emulator
+     */
     val avdControl: AVDControl
 
+    /**
+     * The fingerprint control for this emulator
+     */
     val fingerprintControl: FingerprintControl
 
+    /**
+     * The geo-location control for this emulator
+     */
     val geoControl: GEOControl
 
+    /**
+     * The sms control for this emulator
+     */
     val smsControl: SMSControl
 
+    /**
+     * The cmda control for this emulator
+     */
     val cdmaControl: CDMAControl
 
+    /**
+     * The gsm control for this emulator
+     */
     val gsmControl: GSMControl
 }

@@ -18,19 +18,42 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling the AVD executing on the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface AVDControl {
 
+    /**
+     * Stops emulating the AVD. The device is now effectively paused
+     *
+     * @return True on success, false on failure
+     */
     fun stop(): Boolean
 
+    /**
+     * Starts a previously stopped execution (via [stop])
+     *
+     * @return True on success, false on failure
+     */
     fun start(): Boolean
 
+    /**
+     * Same as [start]
+     */
     fun restart(): Boolean
 
+    /**
+     * Checks the status of the avd
+     *
+     * @return True of the avd is running, false if it is currently stopped
+     */
     fun status(): Boolean
 
+    /**
+     * The name of the emulator
+     */
     fun name(): String
 
 }

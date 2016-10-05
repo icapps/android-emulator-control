@@ -18,21 +18,58 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling power settings of the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface PowerControl {
 
+    /**
+     * Reads the current power configuration from the device
+     *
+     * @return The power configuration of the device
+     */
     fun powerConfig(): PowerConfiguration
 
+    /**
+     * Sets the ac status of the device, either connected or disconnected
+     *
+     * @param [isConnected] True for when the device is connected, false if not
+     * @return True on success, false on failure
+     */
     fun setAcStatus(isConnected: Boolean): Boolean
 
+    /**
+     * Sets the power status of the device
+     *
+     * @param [powerStatus] The power status to set
+     * @return True on success, false on failure
+     */
     fun setPowerStatus(powerStatus: PowerStatus): Boolean
 
+    /**
+     * Sets the health status of the battery of the device
+     *
+     * @param [powerHealthStatus] The power health status to set
+     * @return True on success, false on failure
+     */
     fun setPowerHealthStatus(powerHealthStatus: PowerHealthStatus): Boolean
 
+    /**
+     * Sets the flag indicating if the device has a batter or not
+     *
+     * @param [hasBattery] Flag indicating if the device has a battery connected or not
+     * @return True on success, false on failure
+     */
     fun setBattery(hasBattery: Boolean): Boolean
 
+    /**
+     * Sets the device capacity in percentage (0 ... 100)
+     *
+     * @param [capacity] The power percentage of the battery. Must fall within [0 ... 100]
+     * @return True on success, false on failure
+     */
     fun setCapacity(capacity: Int): Boolean
 
 }

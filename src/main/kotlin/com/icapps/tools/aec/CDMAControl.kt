@@ -18,13 +18,27 @@
 package com.icapps.tools.aec
 
 /**
+ * The interface for controlling the CDMA features of the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface CDMAControl {
 
+    /**
+     * Sets the CDMA source of the device
+     *
+     * @param [source] The source
+     * @return True on success, false on failure
+     */
     fun setCDMASource(source: CDMASource): Boolean
 
+    /**
+     * No idea what this does, something, probably, who knows
+     *
+     * @param [version] A number, presumably a version. Of what?
+     * @return True when the command was accepted, false if it failed
+     */
     fun dumpPRL(version: Int): Boolean
 
 }

@@ -17,7 +17,7 @@
 
 package com.icapps.tools.aec.internal
 
-import com.icapps.tools.aec.control.TelnetInputStream
+import com.icapps.tools.aec.internal.TelnetInputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream

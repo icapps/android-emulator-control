@@ -18,25 +18,72 @@
 package com.icapps.tools.aec
 
 /**
+ * Interface for controlling GSM features of the emulator
+ *
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
 interface GSMControl {
 
+    /**
+     * Initiates a phone call coming from the given number to the device
+     *
+     * @param [fromNumber] The number to call from
+     * @return True on success, false on failure
+     */
     fun callToEmulator(fromNumber: String): Boolean
 
+    /**
+     * Cancels a call, either incoming or outgoing
+     *
+     * @param [number] The phone number of the incoming or outgoing call
+     * @return True on success, false on failure
+     */
     fun cancelCall(number: String): Boolean
 
+    /**
+     * Sets the data state of the device
+     *
+     * @param [state] The new data state of the device
+     * @return True on success, false on failure
+     */
     fun setDataState(state: GSMState): Boolean
 
+    /**
+     * Sets the voice state of the device
+     *
+     * @param [state] The new voice state of the device
+     * @return True on success, false on failure
+     */
     fun setVoiceState(state: GSMState): Boolean
 
+    /**
+     * Reads the gsm status from the device
+     *
+     * @return The GSM status. If a field was not returned by the device, it is set to [GSMState.HOME]
+     */
     fun gsmStatus(): GSMStatus
 
+    /**
+     * Sets the RRSI of the device
+     *
+     * @param [rrsi] The rrsi to set. Must be in the range [0...31] or 99 when the rssi is unknown
+     */
     fun setSignal(rrsi: Int): Boolean
 
+    /**
+     * Sets the RRSI and bit error rate of the device
+     *
+     * @param [rrsi] The rrsi to set. Must be in the range [0...31] or 99 when the rssi is unknown
+     * @param [bitErrorRate] The hit error rate. Must be in the range [0...7] or 99 when the rate is unknown
+     */
     fun setSignal(rrsi: Int, bitErrorRate: Int): Boolean
 
+    /**
+     * Sets the signal strength of the device
+     *
+     * @param [strength] The strength of the signal. Must be in the range [0...4]
+     */
     fun setSignalStrength(strength: Int): Boolean
 }
 
