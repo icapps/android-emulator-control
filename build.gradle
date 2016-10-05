@@ -20,6 +20,4 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    
-    compile group: 'commons-net', name: 'commons-net', version: '3.5'
 }
