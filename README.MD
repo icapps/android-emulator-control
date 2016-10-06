@@ -33,7 +33,8 @@ dependencies {
 }
 ```
 
-```java
+Library usage:
+```Java
 //Create emulator control instance where port is the emulator port, usually 5554 and authToken is the token stored in ~/.emulator_console_auth_token
 Emulator emulator = EmulatorFactory.create(port, authToken);
 emulator.rotate();
