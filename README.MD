@@ -37,10 +37,12 @@ Library usage:
 ```Java
 //Create emulator control instance where port is the emulator port, usually 5554 and authToken is the token stored in ~/.emulator_console_auth_token
 Emulator emulator = EmulatorFactory.create(port, authToken);
+emulator.connect();
 emulator.rotate();
 emulator.getPowerControl().powerConfig();
-...
+emulator.disconnect();
 ```
+Note that there can only be one telnet connection live to the emulator, this is why you should always disconnect gracefully
 
 ## Changelog
 
