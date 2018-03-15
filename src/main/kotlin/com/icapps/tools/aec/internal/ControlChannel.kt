@@ -17,7 +17,6 @@
 
 package com.icapps.tools.aec.internal
 
-import com.icapps.tools.aec.internal.TelnetInputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -30,7 +29,7 @@ import java.net.SocketTimeoutException
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
-internal class ControlChannel(private val port: Int, private val authToken: String) {
+internal class ControlChannel(private val port: Int, private val authToken: String, private val echoDevice: Boolean) {
 
     companion object {
         private val NO_MORE_DATA_TIMEOUT = 8000
@@ -56,7 +55,7 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
     private fun closeChannel() {
         try {
             write("quit")
-        } catch(ignored: IOException) {
+        } catch (ignored: IOException) {
             //Ignore
         }
         communicationClient.close()
@@ -78,11 +77,14 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
         outputChannel.write(data.toByteArray(Charsets.US_ASCII))
         outputChannel.flush()
         outputChannel.write(0x0D)
+        outputChannel.write(0x0A)
         outputChannel.flush()
 
         //n * (n+1) / 2
-        val echo = 4 * ((data.length * (data.length + 1)) / 2) + 2
-        trueSkip(inputChannel, echo)
+        if (echoDevice) {
+            val echo = 4 * ((data.length * (data.length + 1)) / 2) + 2
+            trueSkip(inputChannel, echo)
+        }
     }
 
     private fun trueSkip(inputChannel: InputStream, echo: Int): Int {
@@ -120,7 +122,7 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
                 } else if (line == "OK") {
                     break
                 }
-            } catch(e: SocketTimeoutException) {
+            } catch (e: SocketTimeoutException) {
                 break
             }
         }
@@ -145,7 +147,7 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
                     authOk = true
                     break
                 }
-            } catch(e: SocketTimeoutException) {
+            } catch (e: SocketTimeoutException) {
                 break
             }
         }

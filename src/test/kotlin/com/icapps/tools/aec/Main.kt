@@ -30,6 +30,8 @@ fun main(args: Array<String>) {
     val channel = EmulatorImpl(5554, File("${System.getProperty("user.home")}/.emulator_console_auth_token").readText())
     channel.connect()
 
+    println(channel.avdControl.name())
+
     channel.rotateLeft()
     channel.rotateLeft()
     channel.rotateLeft()
@@ -53,6 +55,8 @@ fun main(args: Array<String>) {
     channel.powerControl.setPowerStatus(PowerStatus.FULL)
 
     println(channel.powerControl.powerConfig())
+
+
 
     channel.disconnect()
 }

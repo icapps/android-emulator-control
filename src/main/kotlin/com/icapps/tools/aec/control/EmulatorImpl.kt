@@ -24,7 +24,7 @@ import com.icapps.tools.aec.internal.ControlChannel
  * @author Nicola Verbeeck
  * @date 05/10/16.
  */
-internal class EmulatorImpl(port: Int, authToken: String) : Emulator {
+internal class EmulatorImpl(port: Int, authToken: String, echoDevice: Boolean = false) : Emulator {
 
     private val controlChannel: ControlChannel
     override val powerControl: PowerControl
@@ -37,7 +37,7 @@ internal class EmulatorImpl(port: Int, authToken: String) : Emulator {
     override val gsmControl: GSMControl
 
     init {
-        controlChannel = ControlChannel(port, authToken)
+        controlChannel = ControlChannel(port, authToken, echoDevice)
         powerControl = PowerControlImpl(controlChannel)
         redirectionControl = RedirectionControlImpl(controlChannel)
         avdControl = AVDControlImpl(controlChannel)
