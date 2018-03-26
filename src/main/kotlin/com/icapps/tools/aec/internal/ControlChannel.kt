@@ -73,7 +73,6 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
     }
 
     fun write(data: String) {
-        println("---> $data")
         outputChannel.write(data.toByteArray(Charsets.US_ASCII))
         outputChannel.flush()
         outputChannel.write(0x0D)
@@ -116,7 +115,6 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
         while (true) {
             try {
                 val line = read()
-                println(line)
                 if (line.matches(Regex(".* Authentication required"))) {
                     mustAuth = true
                 } else if (line == "OK") {
@@ -139,7 +137,6 @@ internal class ControlChannel(private val port: Int, private val authToken: Stri
         while (true) {
             try {
                 val line = read()
-                println(line)
                 if (line.matches(Regex("NOK.*"))) {
                     offendingLine = line
                     break
